@@ -1,6 +1,7 @@
 package com.pjmike.netty.utils;
 
 import com.pjmike.netty.protocol.protobuf.MessageBase;
+import com.pjmike.netty.server.NettyServer;
 
 import java.util.UUID;
 
@@ -14,5 +15,11 @@ public class MessageBaseTest {
                 .setRequestId(UUID.randomUUID().toString())
                 .setContent("hello world").build();
         System.out.println("message: "+message.toString());
+        /*NettyServer nettyServer=new NettyServer();
+        try {
+            nettyServer.start();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
     }
 }

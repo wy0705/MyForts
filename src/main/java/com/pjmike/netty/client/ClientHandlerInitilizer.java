@@ -15,6 +15,9 @@ import io.netty.handler.timeout.IdleStateHandler;
  */
 public class ClientHandlerInitilizer extends ChannelInitializer<Channel> {
 
+    //不确定
+    private NettyClient nettyClient=new NettyClient();
+
     @Override
     protected void initChannel(Channel ch) throws Exception {
         ch.pipeline()
@@ -23,7 +26,7 @@ public class ClientHandlerInitilizer extends ChannelInitializer<Channel> {
                 .addLast(new ProtobufDecoder(MessageBase.Message.getDefaultInstance()))
                 .addLast(new ProtobufVarint32LengthFieldPrepender())
                 .addLast(new ProtobufEncoder())
-                .addLast(new HeartbeatHandler())
+                .addLast(new HeartbeatHandler(nettyClient))
                 .addLast(new NettyClientHandler());
     }
 }
